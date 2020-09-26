@@ -17,7 +17,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.firstapplication.R;
+import com.example.firstapplication.javaClass.DrawChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -33,29 +35,9 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         //companyListView = (ListView) view.findViewById(R.id.chart);
         LineChart chart = (LineChart) view.findViewById(R.id.chart);
-        // 你要渲染的数据
-        float[] dataObjects = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
-        List<Entry> entries = new ArrayList<>();
-        // 循环你的数据，向图表中添加点
-        for (float data : dataObjects) {
-            // turn your data into Entry objects
-            // 图形横纵坐标默认为float形式，如果想展示文字形式，需要自定义适配器。后边会讲，这个地方传进去的X轴Y轴值都是float类型
-            entries.add(new Entry(data, data));
-        }
-
-        LineDataSet dataSet = new LineDataSet(entries, "Label"); // 图表绑定数据，设置图表折现备注
-
-        dataSet.setColor(Color.RED); // 设置折线图颜色
-        dataSet.setValueTextColor(Color.BLUE); // 设置数据值的颜色
-
-        //Description description = chart.getDescription();
-        //description.setText("..."); // 设置右下角备注
-
-        LineData lineData = new LineData(dataSet);
-
-        chart.setData(lineData); // 图表绑定数据值
-        chart.invalidate(); // 刷新图表
-
+        float[] x = new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
+        float[] y = new float[]{1.0f, -3.0f, 3.0f, 4.0f, 8.0f};
+        DrawChart.draw(chart, x, y);
         return view;
     }
 }
