@@ -17,7 +17,6 @@ import com.example.firstapplication.R;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -30,6 +29,8 @@ public class HomeFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+
         return root;
     }
 }
