@@ -17,15 +17,18 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.firstapplication.R;
-import com.example.firstapplication.javaClass.DrawChart;
+import com.example.firstapplication.javaClass.Chart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import jxl.read.biff.BiffException;
 
 public class HomeFragment extends Fragment {
     //private Activity activity;
@@ -34,10 +37,27 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         //companyListView = (ListView) view.findViewById(R.id.chart);
-        LineChart chart = (LineChart) view.findViewById(R.id.chart);
+        LineChart lineChart = (LineChart) view.findViewById(R.id.chart);
         float[] x = new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
         float[] y = new float[]{1.0f, -3.0f, 3.0f, 4.0f, 8.0f};
-        DrawChart.draw(chart, x, y);
+        Chart chart = new Chart("D:\\SJTU\\EngInnovation\\APP\\app\\src\\main\\assets\\test.xlsx");
+        try {
+            chart.DrawExcelData(lineChart);
+        } catch (BiffException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        /*
+        Chart.Draw(chart, x, y);
+        try {
+            Chart.DrawExcelData();
+        } catch (BiffException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        */
         return view;
     }
 }
