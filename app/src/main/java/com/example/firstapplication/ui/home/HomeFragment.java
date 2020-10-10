@@ -1,6 +1,7 @@
 package com.example.firstapplication.ui.home;
 
 import android.app.Activity;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -40,7 +41,8 @@ public class HomeFragment extends Fragment {
         LineChart lineChart = (LineChart) view.findViewById(R.id.chart);
         float[] x = new float[]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
         float[] y = new float[]{1.0f, -3.0f, 3.0f, 4.0f, 8.0f};
-        Chart chart = new Chart("D:\\SJTU\\EngInnovation\\APP\\app\\src\\main\\assets\\test.xlsx");
+        Chart chart = new Chart("excelReadTest.xls");//storage/emulated/0/Android/data/cn.wps.moffice_eng/.Cloud/cn/294959843/f/" +"048b2115-6680-4743-b1ae-0413ada47a9d/
+
         try {
             chart.DrawExcelData(lineChart);
         } catch (BiffException e) {
@@ -48,16 +50,6 @@ public class HomeFragment extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        /*
-        Chart.Draw(chart, x, y);
-        try {
-            Chart.DrawExcelData();
-        } catch (BiffException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
         return view;
     }
 }
