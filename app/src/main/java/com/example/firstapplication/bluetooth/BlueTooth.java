@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.example.firstapplication.R;
 
 public class BlueTooth extends Activity {
-/*
+    /*
     private Button On, Off, Visible, list;
     private BluetoothAdapter BA;
     private Set<BluetoothDevice> pairedDevices;
@@ -87,5 +87,5 @@ public class BlueTooth extends Activity {
         return true;
     }
 
- */
+     */
 }
